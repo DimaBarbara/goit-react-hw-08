@@ -36,8 +36,8 @@ const App = () => {
   }, [contacts]);
 
   return (
-    <div >
-  <h1>Phonebook</h1>
+    <div className={styles.div} >
+  <h1 className={styles.h1}>Phonebook</h1>
           <ContactForm onAdd={addContact} />
   <SearchBox value={filter} onFilter={setFilter} />
           <ContactList contacts={filterContacts} onDelete={deleteContact} />

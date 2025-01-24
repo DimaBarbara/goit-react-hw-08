@@ -31,22 +31,22 @@ const ContactForm = ({onAdd}) => {
             }}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}>
-                <Form>
-                    <label >
-                        <span>
+                <Form className={styles.form}>
+                    <label className={styles.label}>
+                        <span className={styles.span}>
                             Name
                         </span>
-                        <Field name="name" type="text"  ></Field>
+                        <Field className={styles.input} name="name" type="text"  ></Field>
                           <ErrorMessage name="name" component="div" style={{ color: 'red', fontSize: '0.9em' }}/>
                     </label>
-                    <label >
-                        <span>
+                    <label className={styles.label} >
+                        <span className={styles.span}>
                             Number
                         </span>
-                        <Field name="number" type="tel" ></Field>
+                        <Field className={styles.input} name="number" type="tel" ></Field>
                         <ErrorMessage name="number" component="div" style={{ color: 'red', fontSize: '0.9em' }} />
                     </label>
-                    <button type="submit">Add contact</button>
+                    <button className={styles.button} type="submit">Add contact</button>
                 </Form>
             </Formik>
       

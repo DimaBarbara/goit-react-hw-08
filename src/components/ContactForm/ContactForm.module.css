@@ -35,12 +35,6 @@ input:focus {
   outline: none;
 }
 
-div {
-  color: black;
-  font-size: 0.9em;
-  margin-top: 5px;
-}
-
 button {
   display: block;
   background-color: #ffcd00;
