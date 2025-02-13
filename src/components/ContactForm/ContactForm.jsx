@@ -1,36 +1,38 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { nanoid } from 'nanoid';
-import * as Yup from 'yup';
 import styles from "./ContactForm.module.css";
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { addContact } from '../../redux/contactsSlice';
+import * as Yup from 'yup';
 
 
-const validationSchema = Yup.object({
+const ContactForm = () => {
+    const initialValues = { name: '', number: ''}
+    const dispatch = useDispatch()
+    const oneSubmit = (values, option) => {
+      const newContact = {
+        name: values.name,
+        number: values.number,
+        id: nanoid(),
+        } 
+        dispatch(addContact(newContact))
+    option.resetForm()    
+    }
+    const validationSchema = Yup.object({
     name: Yup.string().required("Name is required").min(3, "Too Short!").max(50, "Too Long!"),
     number: Yup.string().required("Number is required").matches(
       /^[0-9]+$/,
       "Number must contain only digits"
     ).min(3, "Too Short!").max(50, "Too Long!"),
 })
-
-
-const ContactForm = ({onAdd}) => {
-
-    const handleSubmit = (values, actions) => {
-        onAdd({
-            id: nanoid(),
-            name: values.name,
-            number: values.number,
-        });
-        actions.resetForm();
-    }
+    
         return (
-            <Formik initialValues={{
-                name: "",
-                number: ""
-            }}
+            <Formik
+                initialValues={initialValues}
+                onSubmit={oneSubmit}
                 validationSchema={validationSchema}
-                onSubmit={handleSubmit}>
+            >
                 <Form className={styles.form}>
                     <label className={styles.label}>
                         <span className={styles.span}>

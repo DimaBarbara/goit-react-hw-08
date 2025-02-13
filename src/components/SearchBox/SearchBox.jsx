@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { findContact } from '../../redux/filtersSlice';
 
-const SearchBox = ({value, onFilter})=> {
+const SearchBox = () => {
+  const dispatch = useDispatch();
+  
+
   return (
     <div>
       <label>
-        <span>
-          Find contact by name
-        </span>
-        <input value={value} onChange={e => onFilter(e.target.value)}></input>
+        <span>Find contact by name</span>
+        <input
+          name="find"
+          type="text"
+          onChange={e => dispatch(findContact(e.target.value))}
+        />
       </label>
-      <button>Find</button>
+      <button type="button" >
+        Find
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBox
+export default SearchBox;
