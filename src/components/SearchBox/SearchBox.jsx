@@ -16,9 +16,6 @@ const SearchBox = () => {
           onChange={e => dispatch(findContact(e.target.value))}
         />
       </label>
-      <button type="button" >
-        Find
-      </button>
     </div>
   );
 };
