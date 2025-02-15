@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { findContact } from '../../redux/filtersSlice';
+import { changeFilter } from '../../redux/filtersSlice';
 
 const SearchBox = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SearchBox = () => {
         <input
           name="find"
           type="text"
-          onChange={e => dispatch(findContact(e.target.value))}
+          onChange={e => dispatch(changeFilter(e.target.value))}
         />
       </label>
     </div>

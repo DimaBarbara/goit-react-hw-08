@@ -4,8 +4,8 @@ import styles from "./ContactList.module.css"
 import { useSelector } from 'react-redux';
 
 export default function ContactList() {
-    const contacts = useSelector(state => state.contacts.contacts)
-    const filter = useSelector(state => state.filter.filter)
+    const contacts = useSelector(state => state.contacts.items)
+    const filter = useSelector(state => state.filter.name)
     const filterData = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
   return (
       <ul className={styles.ul} >
