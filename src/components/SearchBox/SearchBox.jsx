@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/filtersSlice';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeFilter } from "../../redux/filters/slice";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
-  
 
   return (
     <div>
@@ -13,7 +12,7 @@ const SearchBox = () => {
         <input
           name="find"
           type="text"
-          onChange={e => dispatch(changeFilter(e.target.value))}
+          onChange={(e) => dispatch(changeFilter(e.target.value))}
         />
       </label>
     </div>
